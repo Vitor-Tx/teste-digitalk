@@ -33,6 +33,7 @@ Esse widget deve conter:
   1. Se o usuário não enviar mensagens dentro de 1 minuto o chat deve responder automaticamente "[nome do cliente], você enviou [quantidade de mensagens enviadas] mensagens"
   2. Se o usuário ficar inativo por 3 minutos ou mais, o chat deve encerrar a sessão automaticamente e deve exibir um botão para retornar ao botão inicial.
 
+Não foi especificado um design para a interface, então me baseei de forma simples no layout e cores do site da Digitalk.
 ## Utilização do widget
 
 Se desejar utilizar o widget, basta utilizar a tag iframe, com o link mostrado abaixo:
