@@ -6,13 +6,15 @@ import {
   InputLabel,
   Input,
 } from "@mui/material";
-import { ReactNode, useState } from "react";
-import ChatBubble from "../ChatBubble/index";
+import { ReactNode, useState, useEffect } from "react";
+import ChatBox from "../ChatBox/index";
+
 
 const Welcome = styled.div`
   width: 374px;
   background-color: white;
   min-height: 300px;
+  max-height: 600px;
   display: flex;
   flex-direction: column;
   border-radius: 16px;
@@ -24,7 +26,7 @@ const Welcome = styled.div`
   header {
     background-color: #9b6be8;
     border-radius: 16px 16px 0 0;
-    height: 32px;
+    height: 48px;
     top: 0;
     display: flex;
     align-items: center;
@@ -51,6 +53,20 @@ const Welcome = styled.div`
     p {
       margin: 24px 0;
     }
+  }
+
+  .chat-box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    box-sizing: border-box;
+    padding: 24px;
+    gap: 10px;
+    overflow-y: hidden;
+    p {
+      margin: 24px 0;
+    }
     footer {
       background-color: #9b6be8;
       /* border-radius: 16px 16px 0 0; */
@@ -68,9 +84,9 @@ const Welcome = styled.div`
         }
       }
       input {
-        background: #FAFAFA;
+        background: #fafafa;
         color: #0000007e;
-        border: 1px solid #E1E1E1;
+        border: 1px solid #e1e1e1;
         box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.07);
         height: 34px;
         width: 100%;
@@ -82,16 +98,18 @@ const Welcome = styled.div`
       }
     }
     .chat-bubbles {
+      padding: 16px;
       flex: 1;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      overflow-y: scroll;
     }
   }
 
   input {
-    background: rgba(69, 33, 128, 0.2);
-    color: rgb(252, 252, 252);
+
+
     height: 34px;
     width: 100%;
     font-size: 12px;
@@ -115,10 +133,8 @@ interface ChatBubble {
 
 export default function ChatWelcome({ isOpen, onClose }: ChatWelcomeProps) {
   const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [chatBubbles, setChatBubbles] = useState<ChatBubble[]>([]);
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
   function handleSubmit(event: any) {
     event.preventDefault();
     const chatBubbles = [
@@ -134,29 +150,7 @@ export default function ChatWelcome({ isOpen, onClose }: ChatWelcomeProps) {
         ),
       },
     ];
-
-    console.log(name);
     setIsSubmitted(true);
-    setChatBubbles(chatBubbles);
-  }
-
-  function handleSendMessage(event: any) {
-    event.preventDefault();
-    const chatBubble =
-      {
-        id: chatBubbles[chatBubbles.length -1].id + 1,
-        sender: "user",
-        text: (
-          <>
-            {message}
-          </>
-        ),
-      }
-    ;
-
-    console.log(message);
-    setChatBubbles(prevState => prevState.concat(chatBubble));
-    setMessage("");
   }
 
   const handleInputChange = (e: any) => {
@@ -164,10 +158,12 @@ export default function ChatWelcome({ isOpen, onClose }: ChatWelcomeProps) {
     setName(value);
   };
 
-  const handleMessage = (e: any) => {
-    const { value } = e.target;
-    setMessage(value);
-  };
+  function returnToStart() {
+    setName("");
+    setIsSubmitted(false);
+  }
+
+
 
   return (
     <>
@@ -206,30 +202,8 @@ export default function ChatWelcome({ isOpen, onClose }: ChatWelcomeProps) {
             </div>
           ) : (
             <>
-              <div className="card-body">
-                <div className="chat-bubbles">
-                  {chatBubbles.map((chatBubble) => (
-                    <ChatBubble sender={chatBubble.sender} key={chatBubble.id}>
-                      {chatBubble.text}
-                    </ChatBubble>
-                  ))}
-                </div>
-
-                <footer>
-                  <form onSubmit={handleSendMessage}>
-                    <FormControl>
-                      <TextField
-                        required
-                        type="text"
-                        fullWidth
-                        value={message}
-                        onChange={handleMessage}
-                        label="Escreva sua mensagem"
-                        variant="outlined"
-                      />
-                    </FormControl>
-                  </form>
-                </footer>
+              <div className="chat-box">
+                <ChatBox name={name} returnToStart={returnToStart} />
               </div>
             </>
           )}

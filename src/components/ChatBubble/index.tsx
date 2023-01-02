@@ -10,7 +10,7 @@ import { ReactNode, useState } from "react";
 
 const Bubble = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   padding: 10px;
