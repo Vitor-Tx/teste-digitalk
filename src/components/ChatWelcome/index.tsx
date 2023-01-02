@@ -3,10 +3,8 @@ import {
   Typography,
   TextField,
   FormControl,
-  InputLabel,
-  Input,
 } from "@mui/material";
-import { ReactNode, useState, useEffect } from "react";
+import { ReactNode, useState } from "react";
 import ChatBox from "../ChatBox/index";
 
 
@@ -137,19 +135,6 @@ export default function ChatWelcome({ isOpen, onClose }: ChatWelcomeProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   function handleSubmit(event: any) {
     event.preventDefault();
-    const chatBubbles = [
-      {
-        id: 1,
-        sender: "pc",
-        text: (
-          <>
-            {" "}
-            Bem-vindo, {name}! <br />
-            Como posso te ajudar?{" "}
-          </>
-        ),
-      },
-    ];
     setIsSubmitted(true);
   }
 
@@ -162,8 +147,6 @@ export default function ChatWelcome({ isOpen, onClose }: ChatWelcomeProps) {
     setName("");
     setIsSubmitted(false);
   }
-
-
 
   return (
     <>

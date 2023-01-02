@@ -73,19 +73,6 @@ export default function ChatBox({ name, returnToStart }: ChatBoxProps) {
     setIsFinished(true);
   }
 
-  useEffect(() => {
-    console.log("chatbubbles: ");
-    console.log(chatBubbles);
-    bubblesRef.current = chatBubbles;
-    timerId1.current = setTimeout(() => {handleIdleUser(bubblesRef.current)}, 60000);
-    timerId2.current = setTimeout(() => {finish(bubblesRef.current)}, 180000);
-
-    return () => {
-      clearTimeout(timerId1.current);
-      clearTimeout(timerId2.current);
-    };
-  }, []);
-
   const handleMessage = (e: any) => {
     const { value } = e.target;
     setMessage(value);
@@ -107,9 +94,18 @@ export default function ChatBox({ name, returnToStart }: ChatBoxProps) {
     timerId2.current = setTimeout(() => {finish(bubblesRef.current)}, 180000);
   }
 
+  useEffect(() => {
+    console.log("chatbubbles: ");
+    console.log(chatBubbles);
+    bubblesRef.current = chatBubbles;
+    timerId1.current = setTimeout(() => {handleIdleUser(bubblesRef.current)}, 60000);
+    timerId2.current = setTimeout(() => {finish(bubblesRef.current)}, 180000);
 
-
-
+    return () => {
+      clearTimeout(timerId1.current);
+      clearTimeout(timerId2.current);
+    };
+  }, []);
 
   return (
     <>

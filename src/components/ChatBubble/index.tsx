@@ -1,12 +1,5 @@
 import styled from "styled-components";
-import {
-  Typography,
-  TextField,
-  FormControl,
-  InputLabel,
-  Input,
-} from "@mui/material";
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 
 const Bubble = styled.div`
   display: flex;
@@ -29,9 +22,6 @@ interface ChatBubbleProps {
 }
 
 export default function ChatBubble({ sender, children }: ChatBubbleProps) {
-
-
-
 
   return (
     <Bubble style={sender === "user" ? {color: "#000000",
