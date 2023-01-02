@@ -173,7 +173,7 @@ export default function ChatWelcome({ isOpen, onClose }: ChatWelcomeProps) {
             <Typography>Fale conosco</Typography>
             <img
               onClick={onClose}
-              src="../../../public/close-icon.svg"
+              src="../../../close-icon.svg"
               alt=""
             />
           </header>

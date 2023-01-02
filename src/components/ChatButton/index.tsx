@@ -26,7 +26,7 @@ interface ChatButtonProps {
 export default function ChatButton({ isOpen, onClick }: ChatButtonProps) {
     return (
         <>
-          {!isOpen && <Button onClick={onClick}><img src="../../../public/cht2.png" alt="" /></Button>}
+          {!isOpen && <Button onClick={onClick}><img src="../../../cht2.png" alt="" /></Button>}
         </>
     );
 }
