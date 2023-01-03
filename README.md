@@ -7,7 +7,7 @@
 <p align="center">
   <a href="#user-content-qual-o-desafio">Sobre</a> •
   <a href="#user-content-utilização-do-widget">Utilização do widget</a> •
-  <a href="#user-instalação-local">Instalação Local</a> •
+  <a href="#user-content-instalação-local">Instalação Local</a> •
   <a href="#user-content-tecnologias-utilizadas">Tecnologias Utilizadas</a>
 </p>
 
@@ -62,6 +62,8 @@ Se desejar utilizar o widget, basta utilizar a tag iframe, com o link mostrado a
 </body>
 </html>
 ```
+
+Ou você pode acessar uma demo já hospedada online [aqui](https://chat-digitalk.vercel.app/) 
 
 ### Instalação local
 
