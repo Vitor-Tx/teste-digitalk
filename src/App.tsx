@@ -25,7 +25,6 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <CssBaseline /> */}
       <div className="App">
         <ChatContainer isOpen={isOpen} onClose={() => setIsOpen(false)} />
         <ChatButton isOpen={isOpen} onClick={() => setIsOpen(true)} />

@@ -17,6 +17,15 @@ const Container = styled.div`
   bottom: 32px;
   box-shadow: rgb(0 0 0 / 20%) 0px 0px 0.428571rem 0px;
 
+  @media (max-width: 576px) {
+    position: relative;
+    right: unset;
+    bottom: unset;
+    max-width: calc(100vw - 32px);
+    min-height: 400px;
+  }
+
+
   header {
     background-color: #9b6be8;
     border-radius: 16px 16px 0 0;

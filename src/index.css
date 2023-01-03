@@ -29,7 +29,7 @@ body {
   display: flex;
   place-items: center;
   background: transparent;
-  min-width: 320px;
+  min-width: 275px;
   min-height: 100vh;
 }
 
