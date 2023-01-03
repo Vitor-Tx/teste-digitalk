@@ -31,6 +31,13 @@ export default function ChatContainer({ isOpen, onClose }: ChatContainerProps) {
 
   function returnToStart() {
     setName("");
+    setChatBubbles([
+      {
+        id: 1,
+        sender: "pc",
+        text: <></>,
+      },
+    ]);
     setIsSubmitted(false);
   }
 
