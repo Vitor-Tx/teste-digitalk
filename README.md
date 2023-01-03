@@ -41,24 +41,25 @@ Se desejar utilizar o widget, basta utilizar a tag iframe, com o link mostrado a
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-  </head>
-  <body>
+</head>
+<body>
     <iframe
-      src="https://chat-digitalk.vercel.app"
-      width="450"
-      height="650"
-      style="border: none;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      "
-    ></iframe>
-  </body>
+  src="https://chat-digitalk.vercel.app/"
+
+  style="border: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  "
+></iframe>
+</body>
 </html>
 ```
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, useEffect, useRef, useState } from "react";
 import ChatBubble from "../ChatBubble";
 import { TextField, FormControl } from "@mui/material";
 
@@ -11,6 +11,8 @@ interface ChatBubble {
 
 interface ChatBoxProps {
   name: string;
+  chatBubbles: ChatBubble[];
+  setChatBubbles: Dispatch<SetStateAction<ChatBubble[]>>;
   returnToStart: () => void;
 }
 
@@ -33,6 +35,10 @@ const Container = styled.div`
   padding: 24px;
   gap: 10px;
   overflow-y: hidden;
+
+  @media (max-width: 576px) {
+    min-height: 400px;
+  }
   p {
     margin: 24px 0;
   }
@@ -76,22 +82,16 @@ const Container = styled.div`
   }
 `;
 
-export default function ChatBox({ name, returnToStart }: ChatBoxProps) {
+export default function ChatBox({ name, chatBubbles, setChatBubbles, returnToStart }: ChatBoxProps) {
   const [isFinished, setIsFinished] = useState(false);
   const [message, setMessage] = useState("");
-  const [chatBubbles, setChatBubbles] = useState<ChatBubble[]>([
-    {
-      id: 1,
-      sender: "pc",
-      text: (
-        <>
-          {" "}
-          Bem-vindo, {name}! <br />
-          Como posso te ajudar?{" "}
-        </>
-      ),
-    },
-  ]);
+  chatBubbles[0].text = (<>
+    {" "}
+    Bem-vindo, {name}! <br />
+    Como posso te ajudar?{" "}
+  </>)
+
+
   const timerId1 = useRef(0);
   const timerId2 = useRef(0);
   const bubblesRef = useRef(chatBubbles);
@@ -157,7 +157,10 @@ export default function ChatBox({ name, returnToStart }: ChatBoxProps) {
   }
 
   useEffect(() => {
+    console.log("renderizou!");
+    console.log(name);
     bubblesRef.current = chatBubbles;
+    console.log(bubblesRef.current);
     timerId1.current = setTimeout(() => {
       handleIdleUser(bubblesRef.current);
     }, 60000);

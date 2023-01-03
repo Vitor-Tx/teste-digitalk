@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Typography} from "@mui/material";
+import { Typography } from "@mui/material";
 import React, { FormEvent, ReactNode, useState } from "react";
 import ChatBox from "../ChatBox/index";
 import ChatWelcome from "../ChatWelcome";
@@ -22,14 +22,12 @@ const Container = styled.div`
     right: unset;
     bottom: unset;
     max-width: calc(100vw - 32px);
-    min-height: 400px;
   }
-
 
   header {
     background-color: #9b6be8;
     border-radius: 16px 16px 0 0;
-    height: 48px;
+    min-height: 48px;
     top: 0;
     display: flex;
     align-items: center;
@@ -61,9 +59,22 @@ interface ChatContainerProps {
   onClose: () => void;
 }
 
+interface ChatBubble {
+  id: number;
+  sender: string;
+  text: ReactNode;
+}
+
 export default function ChatContainer({ isOpen, onClose }: ChatContainerProps) {
   const [name, setName] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [chatBubbles, setChatBubbles] = useState<ChatBubble[]>([
+    {
+      id: 1,
+      sender: "pc",
+      text: (<></>),
+    },
+  ]);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -84,9 +95,18 @@ export default function ChatContainer({ isOpen, onClose }: ChatContainerProps) {
             <img onClick={onClose} src="../../../close-icon.svg" alt="" />
           </header>
           {!isSubmitted ? (
-            <ChatWelcome name={name} setName={setName} handleSubmit={handleSubmit} />
+            <ChatWelcome
+              name={name}
+              setName={setName}
+              handleSubmit={handleSubmit}
+            />
           ) : (
-            <ChatBox name={name} returnToStart={returnToStart} />
+            <ChatBox
+              chatBubbles={chatBubbles}
+              setChatBubbles={setChatBubbles}
+              name={name}
+              returnToStart={returnToStart}
+            />
           )}
         </Container>
       )}
