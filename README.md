@@ -75,7 +75,7 @@ $ git clone https://github.com/Vitor-Tx/teste-digitalk.git
 # Entre na pasta raiz
 $ cd teste-digitalk
 
-# Instale as depêndencias
+# Instale as dependências
 $ npm i
 
 # Rode o projeto(acesse http://localhost:5173/).
