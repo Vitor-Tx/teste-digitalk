@@ -1,14 +1,19 @@
-import styled from "styled-components";
-import { Dispatch, ReactNode, SetStateAction, useEffect, useRef, useState } from "react";
-import ChatBubble from "../ChatBubble";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { TextField, FormControl } from "@mui/material";
-
+import { Button, Container } from "./styles";
+import ChatBubble from "../ChatBubble";
 interface ChatBubble {
   id: number;
   sender: string;
   text: ReactNode;
 }
-
 interface ChatBoxProps {
   name: string;
   chatBubbles: ChatBubble[];
@@ -16,81 +21,21 @@ interface ChatBoxProps {
   returnToStart: () => void;
 }
 
-const Button = styled.button`
-  border: none;
-  background-color: white;
-  :hover {
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    border: none;
-  }
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  position: relative;
-  box-sizing: border-box;
-  padding: 24px;
-  gap: 10px;
-  overflow-y: hidden;
-
-  @media (max-width: 576px) {
-    min-height: 400px;
-  }
-  p {
-    margin: 24px 0;
-  }
-  footer {
-    background-color: #9b6be8;
-    height: 32px;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 16px;
-    position: relative;
-    form {
-      width: 100%;
-      div {
-        width: 100%;
-      }
-    }
-    input {
-      background: #fafafa;
-      color: #0000007e;
-      border: 1px solid #e1e1e1;
-      box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.07);
-      height: 34px;
-      width: 100%;
-      font-size: 12px;
-      padding: 8px 16px;
-      border-radius: 3px;
-      border: none;
-      outline: none;
-    }
-  }
-
-  .chat-bubbles {
-    padding: 16px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    overflow-y: scroll;
-  }
-`;
-
-export default function ChatBox({ name, chatBubbles, setChatBubbles, returnToStart }: ChatBoxProps) {
+export default function ChatBox({
+  name,
+  chatBubbles,
+  setChatBubbles,
+  returnToStart,
+}: ChatBoxProps) {
   const [isFinished, setIsFinished] = useState(false);
   const [message, setMessage] = useState("");
-  chatBubbles[0].text = (<>
-    {" "}
-    Bem-vindo, {name}! <br />
-    Como posso te ajudar?{" "}
-  </>)
-
+  chatBubbles[0].text = (
+    <>
+      {" "}
+      Bem-vindo, {name}! <br />
+      Como posso te ajudar?{" "}
+    </>
+  );
 
   const timerId1 = useRef(0);
   const timerId2 = useRef(0);

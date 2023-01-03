@@ -1,25 +1,15 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './App.css';
-import styled from 'styled-components';
-import ChatButton from './components/ChatButton';
-import ChatWelcome from './components/ChatContainer';
-import { createTheme, ThemeProvider, } from '@mui/material';
-import ChatContainer from './components/ChatContainer';
-
-
+import { useState } from "react";
+import { createTheme, ThemeProvider } from "@mui/material";
+import ChatButton from "./components/ChatButton";
+import ChatContainer from "./components/ChatContainer";
+import "./App.css";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
 
   const theme = createTheme({
     typography: {
-      fontFamily: [
-        'Poppins',
-        'Roboto',
-        'Arial',
-        'sans-serif',
-      ].join(','),
+      fontFamily: ["Poppins", "Roboto", "Arial", "sans-serif"].join(","),
     },
   });
 
@@ -30,7 +20,7 @@ function App() {
         <ChatButton isOpen={isOpen} onClick={() => setIsOpen(true)} />
       </div>
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,6 +1,6 @@
 import { Typography, TextField, FormControl } from "@mui/material";
 import { Dispatch, FormEvent, SetStateAction } from "react";
-import styled from "styled-components";
+import { Welcome } from "./styles";
 
 interface ChatWelcomeProps {
   name: string;
@@ -8,25 +8,11 @@ interface ChatWelcomeProps {
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 
-const Welcome = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  position: relative;
-  box-sizing: border-box;
-  padding: 24px;
-  gap: 10px;
-  p {
-    margin: 24px 0;
-  }
-`;
-
 export default function ChatWelcome({
   name,
   setName,
   handleSubmit,
 }: ChatWelcomeProps) {
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setName(value);

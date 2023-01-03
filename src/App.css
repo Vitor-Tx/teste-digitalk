@@ -1,6 +1,4 @@
 #root {
-  /* width: 100vw;
-  height: 100vh; */
   margin: 0 auto;
   text-align: center;
 
@@ -12,18 +10,9 @@
     height: 100vh;
     display: flex;
     align-items: center;
-    /* align-items: end; */
     justify-content: center;
     padding: 0 16px;
-    /* padding: 16px; */
     box-sizing: border-box;
   }
 
 }
-
-/* @media (orientation: landscape) {
-  #root {
-    align-items: end;
-    padding: 16px;
-  }
-} */
